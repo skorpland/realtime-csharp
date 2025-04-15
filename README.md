@@ -1,64 +1,11 @@
-<p align="center">
-<img width="300" src=".github/logo.png"/>
-</p>
-<p align="center">
-  <img src="https://github.com/skorpland/realtime-csharp/workflows/Build%20And%20Test/badge.svg"/>
-  <a href="https://www.nuget.org/packages/Powerbase.Realtime/">
-    <img src="https://img.shields.io/nuget/vpre/Powerbase.Realtime"/>
-  </a>
-</p>
-
----
-
-## [Notice]: v7.0.0 renames this package from `realtime-csharp` to `Powerbase.Realtime`. The depreciation notice has been set in NuGet. The API remains the same.
-
-
-## BREAKING CHANGES MOVING FROM v5.x.x to v6.x.x
-
-- The realtime client now takes a "fail-fast" approach. On establishing an initial connection, client will throw
-  a `RealtimeException` in `ConnectAsync()` if the socket server is unreachable. After an initial connection has been
-  established, the **client will continue attempting reconnections indefinitely until disconnected.**
-- [Major, New] C# `EventHandlers` have been changed to `delegates`. This should allow for cleaner event data access over
-  the previous subclassed `EventArgs` setup. Events are scoped accordingly. For example, the `RealtimeSocket` error
-  handlers will receive events regarding socket connectivity; whereas the `RealtimeChannel` error handlers will receive
-  events according to `Channel` joining/leaving/etc. This is implemented with the following methods prefixed by (
-  Add/Remove/Clear):
-    - `RealtimeBroadcast.AddBroadcastEventHandler`
-    - `RealtimePresence.AddPresenceEventHandler`
-    - `RealtimeSocket.AddStateChangedHandler`
-    - `RealtimeSocket.AddMessageReceivedHandler`
-    - `RealtimeSocket.AddHeartbeatHandler`
-    - `RealtimeSocket.AddErrorHandler`
-    - `RealtimeClient.AddDebugHandler`
-    - `RealtimeClient.AddStateChangedHandler`
-    - `RealtimeChannel.AddPostgresChangeHandler`
-    - `RealtimeChannel.AddMessageReceivedHandler`
-    - `RealtimeChannel.AddErrorHandler`
-    - `Push.AddMessageReceivedHandler`
-- [Major, new] `ClientOptions.Logger` has been removed in favor of `Client.AddDebugHandler()` which allows for
-  implementing custom logging solutions if desired.
-  - A simple logger can be set up with the following:
-  ```c#
-  client.AddDebugHandler((sender, message, exception) => Debug.WriteLine(message));
-  ```
-- [Major] `Connect()` has been marked `Obsolete` in favor of `ConnectAsync()`
-- Custom reconnection logic has been removed in favor of using the built-in logic from `Websocket.Client@4.6.1`.
-- Exceptions that are handled within this library have been marked as `RealtimeException`s.
-- The local, docker-composed test suite has been brought back (as opposed to remotely testing on live powerbase servers)
-  to test against.
-- Comments have been added throughout the entire codebase and an `XML` file is now generated on build.
-
----
-
-**See realtime-csharp in action [here](https://multiplayer-csharp.azurewebsites.net/).**
-
-`realtime-csharp` is written as a client library for [powerbase/realtime](https://github.com/skorpland/realtime).
+ 
+`realtime-csharp` is written as a client library for [skorpland/realtime](https://github.com/skorpland/realtime).
 
 Documentation can be
 found [here](https://powerbase-community.github.io/realtime-csharp/api/Powerbase.Realtime.Client.html).
 
 The bulk of this library is a translation and c-sharp-ification of
-the [powerbase/realtime-js](https://github.com/skorpland/realtime-js) library.
+the [skorpland/realtime-js](https://github.com/skorpland/realtime-js) library.
 
 **The Websocket-sharp implementation that Realtime-csharp is dependent on does _not_ support TLS1.3**
 
@@ -296,6 +243,6 @@ We are more than happy to have contributions! Please submit a PR.
 
 ## Testing
 
-Note that the latest versions of `powerbase/realtime` expect to be able to access a subdomain matching the tenant. For
+Note that the latest versions of `skorpland/realtime` expect to be able to access a subdomain matching the tenant. For
 the case of testing, this means that `realtime-dev.localhost:4000` should be available. To have tests run locally,
 please add a hosts entry on your system for: `127.0.0.1  realtime-dev.localhost`

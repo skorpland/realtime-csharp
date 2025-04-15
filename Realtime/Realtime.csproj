@@ -6,7 +6,7 @@
         <RootNamespace>Powerbase.Realtime</RootNamespace>
         <AssemblyName>Powerbase.Realtime</AssemblyName>
         <Authors>Joseph Schultz &lt;joseph@acupofjose.com&gt;</Authors>
-        <Description>Realtime-csharp is written as a client library for powerbase/realtime.</Description>
+        <Description>Realtime-csharp is written as a client library for skorpland/realtime.</Description>
         <PackOnBuild>true</PackOnBuild>
         <Copyright>MIT</Copyright>
         <NeutralLanguage>en</NeutralLanguage>
@@ -14,7 +14,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Owners>Joseph Schultz &lt;joseph@acupofjose.com&gt;</Owners>
         <PackageProjectUrl>https://github.com/skorpland/realtime-csharp</PackageProjectUrl>
-        <Summary>Realtime-csharp is written as a  client library for powerbase/realtime.</Summary>
+        <Summary>Realtime-csharp is written as a  client library for skorpland/realtime.</Summary>
         <PackageTags>powerbase, realtime, phoenix</PackageTags>
         <PackageVersion>7.1.0</PackageVersion>
         <ReleaseVersion>7.1.0</ReleaseVersion>
